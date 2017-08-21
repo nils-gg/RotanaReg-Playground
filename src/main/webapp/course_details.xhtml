@@ -8,16 +8,16 @@
 
 <ui:composition template="templates/template_page.xhtml">
     <f:metadata>
-        <f:viewParam name ="courseId" value="#{courseDetails.courseId}"/>
-        <f:viewAction action="#{courseDetails.onload}"/>
+        <f:viewParam name ="courseId" value="#{course.Id}"/>
+        <f:viewAction action="#{course.onload}"/>
     </f:metadata>
 
     <ui:param name="pageTitle" value="Course Details"/>
 	<ui:define name="panel-main">
 	<section class="course_details">
 	<h:form>
-	<h1>#{courseDetails.course.name}</h1>
-        <p>#{courseDetails.course.description}</p>
+	<h1>#{course.name}</h1>
+        <p>#{course.description}</p>
 	 </h:form>
         </section>
     </ui:define>

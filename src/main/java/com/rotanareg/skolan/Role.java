@@ -10,9 +10,9 @@ public enum Role {
     public String toString() {
         switch (this) {
             case STUDENT:
-                return "Student";
+                return "StudentJAS";
             case TEACHER:
-                return "Teacher";
+                return "TeacherJAS";
             case ADMIN:
                 return "Admin";
         }
