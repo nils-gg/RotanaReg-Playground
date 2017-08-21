@@ -10,6 +10,12 @@
 
 
     <section>
+        <h:dataTable value="#{coursesBean.courses.courses}" var="myCourse">
+            <h:column>
+                <h1>#{myCourse.name}</h1>
+                #{myCourse.description}
+            </h:column>
+        </h:dataTable>
             <h:form>
             <h:dataTable value="#{student.lines}" var="line"
                          styleClass="student-table"

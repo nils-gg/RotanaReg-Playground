@@ -3,17 +3,20 @@ package com.rotanareg.skolan.domains;
 /**
  * Created by Nils Gerstner on 8/20/17.
  */
+
 public class Course {
     private long id;
     private String name;
     private String description;
     private String courseNr;
 
-    public Course(){
+    public Course(String name, String description, String courseNr){
         this.name = name;
         this.description = description;
         this.courseNr = courseNr;
     }
+
+
 
     public Course(long id, String name, String description, String courseNr){
         this.id = id;
