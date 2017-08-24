@@ -1,9 +1,8 @@
 package com.rotanareg.skolan.coursePersist;
 
-import com.rotanareg.skolan.domains.Course;
-
-import javax.ejb.Local;
 import java.util.List;
+import javax.ejb.Local;
+import com.rotanareg.skolan.domains.Course;
 
 /**
  * Created by Solidbeans on 2017-03-20.

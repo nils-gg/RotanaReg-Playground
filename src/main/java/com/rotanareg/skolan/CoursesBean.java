@@ -7,11 +7,8 @@ import javax.ejb.EJB;
 
         import javax.faces.bean.ManagedBean;
         import javax.faces.bean.RequestScoped;
-import java.util.List;
+        import java.util.List;
 
-/**
- * Created by Solidbeans on 2017-03-20.
- */
 
 @ManagedBean
 @RequestScoped
@@ -76,62 +73,4 @@ public class CoursesBean {
     public void setCourseService(CourseService courseService) {
         this.courseService = courseService;
     }
-    //    public String editPerson(Long id){
-//        PersonDomain personDomain = personService.getPerson(id);
-//        setId(personDomain.getId());
-//        setFirstname(personDomain.getFirstName());
-//        setLastname(personDomain.getLastName());
-//        return "person";
-//    }
-//    public String removePerson(Long id){
-//        personService.removePerson(id);
-//        return "person";
-//    }
-//    public List<Course> getCourses(){
-//        return courseService.getCourses();
-//    }
-//    public List<PersonDomain> getPersonsFilter(){
-//        if (myFilter==null || myFilter.equals(""))
-//            return personService.getPersons();
-//        else
-//            return personService.getPersonsFirtsNameContain(myFilter);
-//    }
-//
-//    public String getSubmitButtonLabel(){
-//        if (id==null)
-//            return "Add";
-//        else
-//            return "Update";
-//    }
-//    public String getFirstname() {
-//        return firstname;
-//    }
-//
-//    public void setFirstname(String firstname) {
-//        this.firstname = firstname;
-//    }
-//
-//    public String getLastname() {
-//        return lastname;
-//    }
-//
-//    public void setLastname(String lastname) {
-//        this.lastname = lastname;
-//    }
-//
-//    public Long getId() {
-//        return id;
-//    }
-//
-//    public void setId(Long id) {
-//        this.id = id;
-//    }
-//
-//    public String getMyFilter() {
-//        return myFilter;
-//    }
-//
-//    public void setMyFilter(String myFilter) {
-//        this.myFilter = myFilter;
-//    }
 }

@@ -16,8 +16,6 @@ public class Course {
         this.courseNr = courseNr;
     }
 
-
-
     public Course(long id, String name, String description, String courseNr){
         this.id = id;
         this.name = name;
