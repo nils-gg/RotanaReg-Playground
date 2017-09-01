@@ -8,9 +8,6 @@ import javax.persistence.PersistenceContext;
 import java.util.List;
 import java.util.stream.Collectors;
 
-/**
- * Created by Solidbeans on 2017-03-20.
- */
 
 @Stateless
 public class CourseServiceImpl implements CourseService{
@@ -49,7 +46,7 @@ public class CourseServiceImpl implements CourseService{
 
     @Override
     public List<Course> getCourses() {
-       List<CourseEntity> courseEntityList = em.createNamedQuery("selectAll").getResultList();
+       List<CourseEntity> courseEntityList = em.createNamedQuery("selectAllCourses").getResultList();
        if (courseEntityList.isEmpty()){
            CourseEntity a = new CourseEntity("Engelska",
                    "Du som behärskar engelska kommer långt. Engelska är ett världsspråk och antalet engelsktalande människor i världen ökar ständigt. Men engelska är inte bara samtal. Det är också litteratur att läsa och texter att skriva. Välkommen till oss när du vill förbättra din engelska!",
@@ -71,7 +68,7 @@ public class CourseServiceImpl implements CourseService{
 
     @Override
     public List<Course> getCoursesContaining(String filter) {
-        List<CourseEntity> courseEntityList = em.createNamedQuery("selectSome").setParameter("filt",filter).getResultList();
+        List<CourseEntity> courseEntityList = em.createNamedQuery("selectSomeCourses").setParameter("filt",filter).getResultList();
 
         return courseEntityList.stream().
                 map(c->new Course(c.getId(),c.getName(),c.getDescription(),c.getCourseNr())).

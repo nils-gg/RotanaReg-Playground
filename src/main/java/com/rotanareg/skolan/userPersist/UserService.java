@@ -5,9 +5,7 @@ import com.rotanareg.skolan.domains.User;
 import javax.ejb.Local;
 import java.util.List;
 
-/**
- * Created by Solidbeans on 2017-03-20.
- */
+
 @Local
 public interface UserService {
 
@@ -15,6 +13,6 @@ public interface UserService {
     void updateUser(User user);
     void removeUser(Long id);
     User getUser(Long id);
-    List<User> getUser();
+    List<User> getUsers();
     public List<User> getUserContaining(String filter);
 }

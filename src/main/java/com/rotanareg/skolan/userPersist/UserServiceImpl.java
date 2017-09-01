@@ -9,9 +9,7 @@ import javax.persistence.PersistenceContext;
 import java.util.List;
 import java.util.stream.Collectors;
 
-/**
- * Created by Solidbeans on 2017-03-20.
- */
+
 
 @Stateless
 public class UserServiceImpl implements UserService{
@@ -47,8 +45,8 @@ public class UserServiceImpl implements UserService{
         return ud;
     }
     @Override
-    public List<User> getUser() {
-       List<UserEntity> userEntityList = em.createNamedQuery("selectAll").getResultList();
+    public List<User> getUsers() {
+       List<UserEntity> userEntityList = em.createNamedQuery("selectAllUsers").getResultList();
        if (userEntityList.isEmpty()){
            UserEntity a = new UserEntity("Nils","Gerstner",Role.STUDENT,"1234");
            em.persist(a);
@@ -65,7 +63,7 @@ public class UserServiceImpl implements UserService{
 
     @Override
     public List<User> getUserContaining(String filter) {
-        List<UserEntity> userEntityList = em.createNamedQuery("selectSome").setParameter("filt",filter).getResultList();
+        List<UserEntity> userEntityList = em.createNamedQuery("selectSomeUsers").setParameter("filt",filter).getResultList();
 
         return userEntityList.stream().
                 map(c->new User(c.getId(),c.getName(),c.getLastName(),c.getRole(),c.getPassWord())).

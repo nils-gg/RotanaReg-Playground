@@ -1,16 +1,19 @@
 package com.rotanareg.skolan.userPersist;
 
 import javax.persistence.*;
+import com.rotanareg.skolan.AssociatedPersist.CourseUserAssociation;
 import com.rotanareg.skolan.Role;
+import com.rotanareg.skolan.coursePersist.CourseEntity;
 
-/**
- * Created by Solidbeans on 2017-03-20.
- */
+import java.util.ArrayList;
+import java.util.List;
+
+
 @Entity
 @Table(name = "Person")
 @NamedQueries({
-        @NamedQuery(name="selectAll",query="SELECT u FROM UserEntity u"),
-        @NamedQuery(name="selectSome",query="SELECT t FROM UserEntity t WHERE LOCATE(:filt,t.name) >0 ")
+        @NamedQuery(name="selectAllUsers",query="SELECT u FROM UserEntity u"),
+        @NamedQuery(name="selectSomeUsers",query="SELECT t FROM UserEntity t WHERE LOCATE(:filt,t.name) >0 ")
 })
 public class UserEntity {
     
@@ -22,6 +25,9 @@ public class UserEntity {
     private String name;
     private String lastName;
     private String passWord;
+
+    @OneToMany(mappedBy = "person")
+    private List<CourseUserAssociation> courses;
 
     public UserEntity() {
     }
@@ -71,5 +77,28 @@ public class UserEntity {
 
     public String getPassWord() {
         return passWord;
+    }
+
+    public List<CourseUserAssociation> getCourses() {
+        return courses;
+    }
+
+    public void addCourse (CourseEntity course, boolean isTeacher) {
+        CourseUserAssociation courseUserAssociation = new CourseUserAssociation();
+        if (this.getRole() == Role.ADMIN) {
+            System.out.println("Nor TEACHER or STUDENT; not added!");
+        } else {
+            if (isTeacher && this.getRole() == Role.TEACHER)
+                courseUserAssociation.setTeacher(true);
+            else if (!isTeacher && this.getRole() != Role.STUDENT)
+                courseUserAssociation.setTeacher(false);
+            courseUserAssociation.setPerson(this);
+            courseUserAssociation.setCourse(course);
+            courseUserAssociation.setPersonId(this.getId());
+            courseUserAssociation.setCourseId(course.getId());
+            if (this.courses == null)
+                this.courses = new ArrayList<>();
+            this.courses.add(courseUserAssociation);
+        }
     }
 }
